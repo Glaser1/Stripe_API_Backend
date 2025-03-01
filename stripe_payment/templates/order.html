@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Заказ № {{ order_id }}</title>
+  </head>
+  <script src="https://js.stripe.com/v3/"></script>
+  <body>
+    {% for item in order_items %}
+      <h1>{{ item.name }}</h1>
+      <p>{{ item.description }}</p>
+      <p>{{ item.price }}</p>
+    {% endfor %}
+    <button id="buy-button">Buy</button>
+    <script type="text/javascript">
+      var stripe = Stripe('{{ stripe_public_key }}')
+      var buyButton = document.getElementById('buy-button')
+      buyButton.addEventListener('click', function () {
+        fetch('/api/order/buy/{{ order_id }}/', { method: 'GET' })
+          .then((response) => response.json())
+          .then((session) => {
+            stripe.redirectToCheckout({ sessionId: session.id })
+          })
+          .catch((error) => console.error('Ошибка:', error))
+      })
+    </script>
+  </body>
+</html>

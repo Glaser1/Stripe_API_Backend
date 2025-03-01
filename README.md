@@ -11,12 +11,12 @@
 
 
 ### Стек технологий:
-  Python==3.10, django==4.1.6, python-dotenv==0.21.1, stripe==5.1.1
+  Python==3.12, django==5.1.6, python-dotenv==1.0.1, stripe==11.6.0
 
 ### Установка:
 * Клонируйте репозиторий:
 
-  ``` git clone git@github.com:Glaser1/django-stripe.git ```
+  ``` git@github.com:Glaser1/Stripe_API_Backend.git ```
 * Установите docker согласно официальной инструкции (в зависимости от вашей операционной системы):
     https://docs.docker.com/engine/install/    
 

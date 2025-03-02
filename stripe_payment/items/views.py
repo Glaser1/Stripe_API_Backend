@@ -29,13 +29,23 @@ def create_stripe_product_and_price(item_id):
 
 def create_stripe_order_list(order):
     order_list = []
+
+    order_tax = order.tax
+
+    if order_tax:
+        tax_rate = stripe.TaxRate.create(
+            display_name=order_tax.name,
+            percentage=order_tax.percentage,
+            inclusive=False,
+        )
     for item in order.items.all():
         price = stripe.Price.create(
             currency=item.currency,
             product_data={"name": item.name},
             unit_amount=item.price,
         )
-        order_list.append({"price": price.id, "quantity": 1})
+        order_list.append({"price": price.id, "quantity": 1, "tax_rates": [tax_rate.id] if order_tax else []})
+
     return order_list
 
 
@@ -45,6 +55,7 @@ def create_checkout_session_for_order(request, order_id):
     order_list = create_stripe_order_list(order)
 
     coupons_ids = []
+
     if order.discounts.exists():
         for discount in order.discounts.all():
             coupon = stripe.Coupon.create(percent_off=discount.percent_off)
@@ -55,8 +66,9 @@ def create_checkout_session_for_order(request, order_id):
         mode="payment",
         success_url=settings.APP_DOMAIN + "/success/",
         cancel_url=settings.APP_DOMAIN + "/cancel/",
-        discounts=[{"coupon": v for v in coupons_ids}],  # noqa B035
+        discounts=[{"coupon": v} for v in coupons_ids],
     )
+
     return JsonResponse({"id": session.id})
 
 

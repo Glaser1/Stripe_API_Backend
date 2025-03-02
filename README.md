@@ -44,9 +44,9 @@
   
 ## Примеры запросов:
  - Получить список товаров в заказе (GET-запрос):
-   ``` /order/{order_id}/ ```
+   ``` /api/order/{order_id}/ ```
  - Перейти на страницу оплаты выбранного заказа (GET-запрос):
-  ``` /create-payment-intent/{order_id}/ ```
+  ``` /api/create-payment-intent/{order_id}/ ```
 
   
 ### Проект будет доступен по локальному IP: localhost:8000

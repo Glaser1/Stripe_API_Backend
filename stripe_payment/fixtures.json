@@ -1,0 +1,52 @@
+{
+    "items": [
+        {
+            "name": "Laptop",
+            "description": "A high-end laptop with 16GB RAM and 512GB SSD.",
+            "price": 150000,
+            "currency": "usd"
+        },
+        {
+            "name": "Smartphone",
+            "description": "Latest model smartphone with a 6.5 inch display.",
+            "price": 80000,
+            "currency": "usd"
+        },
+        {
+            "name": "Tablet",
+            "description": "Compact tablet with a 10 inch screen.",
+            "price": 50000,
+            "currency": "usd"
+        },
+        {
+            "name": "Headphones",
+            "description": "Noise-cancelling wireless headphones.",
+            "price": 12000,
+            "currency": "eur"
+        },
+        {
+            "name": "Smartwatch",
+            "description": "A smartwatch with fitness tracking capabilities.",
+            "price": 25000,
+            "currency": "eur"
+        }
+    ],
+    "taxes": [
+        {
+            "name": "VAT",
+            "percentage": 18
+        },
+        {
+            "name": "VAT",
+            "percentage": 5
+        }
+    ],
+    "discounts": [
+        {
+            "percent_off": 10
+        },
+        {
+            "percent_off": 5
+        }
+    ]
+}

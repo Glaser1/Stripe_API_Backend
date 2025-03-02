@@ -28,19 +28,15 @@
   ``` docker compose up -d --build ```
 * Зайдите в контейнер:
   ``` docker exec -it <id контейнера> bash ```
-  
 * Выполните миграцию в контейнерах: 
 
-  ``` python3 manage.py makemigrations ```
+  ``` python3 stripe_payment/manage.py makemigrations ```
   
-  ``` python3 manage.py migrate ```
+  ``` python3 stripe_payment/manage.py migrate ```
 
 * Создайте суперпользователя Django:
 
   ``` python3 manage.py createsuperuser ```
-
-* Заполните базу данных базу данных:
-  ``` python3 manage.py loaddata fixtures.json ```
   
 ## Примеры запросов:
  - Получить список товаров в заказе (GET-запрос):

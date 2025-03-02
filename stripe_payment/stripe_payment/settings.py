@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "items",
+    "mathfilters",
 ]
 
 MIDDLEWARE = [
@@ -133,3 +134,5 @@ STRIPE_PUBLIC_KEY = os.getenv("STRIPE_PUBLIC_KEY")
 STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY")
 
 APP_DOMAIN = "http://localhost:8000/api"
+
+DEFAULT_CURRENCY = "USD"

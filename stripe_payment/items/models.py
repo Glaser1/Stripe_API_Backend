@@ -7,7 +7,9 @@ class Item(models.Model):
     name = models.CharField("Название", max_length=50, help_text="Укажите имя товара")
     description = models.CharField("Описание", max_length=200, help_text="Введите описание товара")
     price = models.PositiveIntegerField("Цена", help_text="Укажите цену в центах")
-    currency = models.CharField("Валюта", max_length=3, help_text="Укажите валюту в формате ISO 4217 (напр.: 'usd')")
+    currency = models.CharField(
+        "Валюта", max_length=3, default="usd", help_text="Укажите валюту в формате ISO 4217 (напр.: 'usd')"
+    )
 
     def save(self, *args, **kwargs):
         self.currency = self.currency.lower()
